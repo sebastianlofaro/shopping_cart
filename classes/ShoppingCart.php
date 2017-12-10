@@ -31,7 +31,7 @@ class ShoppingCart
   public static function contents() {
     //return Product::getProductByID($cartItem);
     foreach ($_SESSION['cart'] as $cartItem => $quantity) {
-      $cartItems[] = Product::getProductByID($cartItem);
+      $cartItems[] = array( "product"=>Product::getProductByID($cartItem), "quantity"=>$quantity );
     }
     return $cartItems;
   }
