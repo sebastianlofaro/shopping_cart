@@ -70,6 +70,32 @@ $(document).ready(function() {
   });
 
 
+  $(".cart-items-wrapper").on("change", ".cart-item-quantity", function(e) {
+    console.log('Change cart item quantity');
+    var $itemID = $(this).parent().parent().children('.cart-item-id').html();
+    var $itemQuantity = $(this).val();
+
+    function updatePage(cartHTML, cartSubtotal) {
+      $('.cart-items-wrapper').html(cartHTML);
+      $('.cart-subtotal').html(cartSubtotal);
+    }
+
+    //console.log($(this).parent().parent().children('.cart-item-id').html());
+    $.ajax({
+      url: 'oven.php',
+      type: 'post',
+      data: {'action': 'updateCartItem', 'itemID': $itemID, 'itemQuantity': $itemQuantity},
+      success: function(data, status) {
+        //console.log(data);
+        //console.log($.parseJSON(data));
+        var $data = $.parseJSON(data);
+        updatePage($data.cartHTML, $data.cartSubTotal);
+        console.log($data.cartSubTotal);
+      }
+    });
+  });
+
+
 
 
 

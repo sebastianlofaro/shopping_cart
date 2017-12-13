@@ -12,18 +12,17 @@
     </nav>
     <div class="wrapper">
       <h1>Shopping Cart</h1>
-
-
-      <ul id="cart-list">
-        <?php
-        //var_dump($cartItems[0]['product']->name);
-        $subtotal = null;
-        foreach ($cartItems as $key => $value) {
-          echo "<li>" . "<div>" . $value['product']->name . "</div>" . "<div> unit cost: " . $value['product']->price . "</div>" . "<div> Quantity: " . $value['quantity'] . "</div>" . "<div> Cost: " . $value['product']->price * $value['quantity'] . "</div>" . "</li>";
-        }
-
-        ?>
-      </ul>
+      <div class="cart-items-wrapper">
+        <?php echo ShoppingCart::cartHTML(); ?>
+      </div>
+      <div class="checkout-box">
+        <div class="">
+          <h2 class="cart-subtotal"><?php echo ShoppingCart::cartSubTotal() ?></h2>
+        </div>
+        <div class="">
+          <button type="button" name="button">CHECKOUT</button>
+        </div>
+      </div>
     </div>
 
 

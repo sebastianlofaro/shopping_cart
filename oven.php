@@ -30,6 +30,10 @@ switch ($_POST['action']) {
     addItemToCart();
     break;
 
+  case 'updateCartItem':
+    updateCartItem();
+    break;
+
   default:
     echo "Default Response...";
     break;
@@ -43,8 +47,16 @@ function addItemToCart() {
   ShoppingCart::addItemToCartWithQuantity($itemNumber, $itemQuantity);
 }
 
+function updateCartItem() {
+  $itemID = $_POST['itemID'];
+  $itemQuantity = $_POST['itemQuantity'];
+  ShoppingCart::updateCartItem($itemID, $itemQuantity);
+  echo ShoppingCart::updateCartItem($itemID, $itemQuantity);
+}
+
 
 
 
 
  ?>
+ 

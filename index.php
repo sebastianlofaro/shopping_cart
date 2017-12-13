@@ -2,6 +2,7 @@
 <?php
 session_start();
 require( "config.php" );
+require __DIR__ . '/vendor/autoload.php';
 $action = isset( $_GET['action'] ) ? $_GET['action'] : "";
 
 switch ( $action ) {
